@@ -64,6 +64,7 @@ DJANGO_APPS = [
     'django.forms',
 ]
 THIRD_PARTY_APPS = [
+    'rest_framework',
     'crispy_forms',
     'sorl.thumbnail',
     'allauth',
@@ -176,6 +177,17 @@ STATICFILES_FINDERS = [
 MEDIA_ROOT = str(ROOT_DIR('media'))
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = '/media/'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    )
+}
 
 # TEMPLATES
 # ------------------------------------------------------------------------------
