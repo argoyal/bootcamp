@@ -3,7 +3,9 @@ from django.conf.urls import url
 from bootcamp.articles.views import (ArticlesListView, DraftsListView,
                                      CreateArticleView, EditArticleView,
                                      DetailArticleView)
-from bootcamp.articles.apis.views import APIArticlesListView
+from bootcamp.articles.apis.views import APIArticlesListView, \
+    APIDraftsListView, APICreateArticleView, APIUpdateArticleView
+
 
 app_name = 'articles'
 
@@ -17,6 +19,11 @@ view_urls = [
 
 api_urls = [
     url(r'^api/articles/$', APIArticlesListView.as_view(), name='list_articles'),
+    url(r'^api/drafts/$', APIDraftsListView.as_view(), name='list_drafts'),
+    url(r'^api/articles/new/$', APICreateArticleView.as_view(),
+        name='create_articles'),
+    url(r'^api/articles/update/(?P<pk>\d+)/$', APIUpdateArticleView.as_view(),
+        name='update_articles'),
 ]
 
 
