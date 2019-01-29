@@ -17,7 +17,7 @@ class ArticleSerializer(CommonAPIMixin, serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = ["title", "content", "image", "tags", "status", "edited",
-                  "popular_tags", "user", "user_name"]
+                  "popular_tags", "user"]
 
     def to_representation(self, instance):
         ret_dict = super(ArticleSerializer, self).to_representation(instance)

@@ -7,7 +7,13 @@ from django.views import defaults as default_views
 
 from graphene_django.views import GraphQLView
 
-urlpatterns = [
+apipatterns = [
+    url(
+        r'api/articles/', include('bootcamp.articles.apis.urls'),
+    ),
+]
+
+viewpatterns = [
     url(r'^$',
         TemplateView.as_view(template_name='pages/home.html'), name='home'),
     url(r'^about/$',
@@ -33,6 +39,8 @@ urlpatterns = [
     url(r'^search/', include('bootcamp.search.urls', namespace='search')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns = viewpatterns + apipatterns
 
 if settings.DEBUG:
     # This allows the error pages to be debugged during development
